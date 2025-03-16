@@ -52,7 +52,7 @@ app.get("/profile", verifyToken, async (req, res) => {
 });
 
 async function generatePdf(html) {
-  return htmlPdfNode.generatePdf({ content: html }, { format: "A4" });
+  return await htmlPdfNode.generatePdf({ content: html }, { format: "A4" });
 }
 
 app.get("/resume", verifyToken, async (req, res) => {
@@ -105,7 +105,7 @@ app.post("/resume", verifyToken, async (req, res) => {
     education,
   });
 
-  const pdfBuffer = generatePdf(html);
+  const pdfBuffer = await generatePdf(html);
 
   //save pdf file to cloudinary
   const cloudinaryResponse = await new Promise((resolve, reject) => {
