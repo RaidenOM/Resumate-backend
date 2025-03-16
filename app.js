@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const htmlPdfNode = require("html-pdf-node");
+const puppeteer = require("puppeteer-core");
+const chrome = require("chrome-aws-lambda");
 const Resume = require("./models/Resume");
 const datefns = require("date-fns");
 const bcrypt = require("bcrypt");
@@ -52,7 +53,19 @@ app.get("/profile", verifyToken, async (req, res) => {
 });
 
 async function generatePdf(html) {
-  return await htmlPdfNode.generatePdf({ content: html }, { format: "A4" });
+  const browser = await puppeteer.launch({
+    executablePath: await chrome.executablePath,
+    args: chrome.args,
+    headless: chrome.headless,
+  });
+  const page = await browser.newPage();
+  await page.setContent(html);
+  const pdfBuffer = await page.pdf({
+    format: "A4",
+  });
+  await browser.close();
+
+  return pdfBuffer;
 }
 
 app.get("/resume", verifyToken, async (req, res) => {
