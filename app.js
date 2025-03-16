@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const puppeteer = require("puppeteer");
+const htmlPdfNode = require("html-pdf-node");
 const Resume = require("./models/Resume");
 const datefns = require("date-fns");
 const bcrypt = require("bcrypt");
@@ -52,15 +52,7 @@ app.get("/profile", verifyToken, async (req, res) => {
 });
 
 async function generatePdf(html) {
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  await page.setContent(html);
-  const pdfBuffer = await page.pdf({
-    format: "A4",
-  });
-  await browser.close();
-
-  return pdfBuffer;
+  return htmlPdfNode.generatePdf({ content: html }, { format: "A4" });
 }
 
 app.get("/resume", verifyToken, async (req, res) => {
@@ -113,13 +105,7 @@ app.post("/resume", verifyToken, async (req, res) => {
     education,
   });
 
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  await page.setContent(html);
-  const pdfBuffer = await page.pdf({
-    format: "A4",
-  });
-  await browser.close();
+  const pdfBuffer = generatePdf(html);
 
   //save pdf file to cloudinary
   const cloudinaryResponse = await new Promise((resolve, reject) => {
