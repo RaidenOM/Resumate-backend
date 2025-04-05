@@ -1,8 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const puppeteer = require("puppeteer-core");
-const chrome = require("chrome-aws-lambda");
+const puppeteer = require("puppeteer");
 const Resume = require("./models/Resume");
 const datefns = require("date-fns");
 const bcrypt = require("bcrypt");
@@ -53,11 +52,7 @@ app.get("/profile", verifyToken, async (req, res) => {
 });
 
 async function generatePdf(html) {
-  const browser = await puppeteer.launch({
-    executablePath: await chrome.executablePath,
-    args: chrome.args,
-    headless: chrome.headless,
-  });
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.setContent(html);
   const pdfBuffer = await page.pdf({
@@ -465,4 +460,6 @@ function generateResumeHTML(data) {
         `;
 }
 // Start the server
-module.exports = app;
+app.listen(process.env.PORT || 3000, () => {
+  console.log("Server running on PORT 3000");
+});
