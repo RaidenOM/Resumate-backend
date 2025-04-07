@@ -400,15 +400,6 @@ module.exports.templates = {
               background: #fff;
               padding: 15px;
             }
-
-            .left-column {
-                flex: 1;
-                padding-right: 15px;
-            }
-
-            .right-column {
-                flex: 2;
-            }
             h1 {
                 font-size: calc(${baseFontSize} * 2);
                 color: #2c3e50;
@@ -462,7 +453,6 @@ module.exports.templates = {
     <body>
         <div class="resume">
             <!-- Left Column -->
-            <div class="left-column">
                 <!-- Header Section -->
                 <header>
                     <h1>${name}</h1>
@@ -492,6 +482,16 @@ module.exports.templates = {
                     </div>
                 </header>
   
+                <!-- About Section -->
+                ${
+                  about
+                    ? `
+                <section class="section">
+                    <h2>About</h2>
+                    <p>${about}</p>
+                </section>`
+                    : ""
+                }
                 <!-- Skills Section -->
                 ${
                   skills.length > 0
@@ -528,20 +528,7 @@ module.exports.templates = {
                 </section>`
                     : ""
                 }
-            </div>
   
-            <!-- Right Column -->
-            <div class="right-column">
-                <!-- About Section -->
-                ${
-                  about
-                    ? `
-                <section class="section">
-                    <h2>About</h2>
-                    <p>${about}</p>
-                </section>`
-                    : ""
-                }
   
                 <!-- Experience Section -->
                 ${
@@ -596,7 +583,6 @@ module.exports.templates = {
                 </section>`
                     : ""
                 }
-            </div>
         </div>
     </body>
     </html>`;
