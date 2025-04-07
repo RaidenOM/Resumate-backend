@@ -391,7 +391,8 @@ module.exports.templates = {
                 color: #333;
                 background: #f9f9f9;
                 font-size: ${baseFontSize};
-                padding: 20px;
+                margin: 0;
+                padding: 0;
             }
             .resume {
                 display: flex;

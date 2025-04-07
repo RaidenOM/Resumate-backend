@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe - Resume</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 5mm;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background: #f9f9f9;
+            font-size: 12px;
+        }
+
+        .resume {
+            display: flex;
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 15px;
+        }
+
+        .left-column {
+            flex: 1;
+            padding-right: 15px;
+            border-right: 2px solid #34495e;
+        }
+
+        .right-column {
+            flex: 2;
+            padding-left: 15px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            font-size: 18px;
+            color: #34495e;
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-info {
+            margin-bottom: 10px;
+        }
+
+        .section {
+            margin-bottom: 15px;
+        }
+
+        .section ul {
+            padding-left: 20px;
+        }
+
+        .section ul li {
+            margin-bottom: 10px;
+        }
+
+        .skills ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .skills ul li {
+            display: inline-block;
+            background: #ecf0f1;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="resume">
+        <!-- Left Column -->
+        <div class="left-column">
+            <!-- Header Section -->
+            <header>
+                <h1>John Doe</h1>
+                <div class="contact-info">
+                    <p>Email: <a href="mailto:john.doe@example.com">john.doe@example.com</a></p>
+                    <p>Phone: <a href="tel:+1 (555) 123-4567">+1 (555) 123-4567</a></p>
+                    <p>Location: New York, USA</p>
+                    <p>GitHub: <a href="https://github.com/johndoe" target="_blank">github.com/johndoe</a></p>
+                    <p>LinkedIn: <a href="https://linkedin.com/in/johndoe" target="_blank">linkedin.com/in/johndoe</a>
+                    </p>
+                    <p>Portfolio: <a href="https://johndoe.dev" target="_blank">johndoe.dev</a></p>
+                </div>
+            </header>
+
+            <!-- Skills Section -->
+            <section class="section skills">
+                <h2>Skills</h2>
+                <ul>
+                    <li>JavaScript</li>
+                    <li>React</li>
+                    <li>Node.js</li>
+                    <li>Python</li>
+                    <li>AWS</li>
+                    <li>Docker</li>
+                    <li>SQL</li>
+                    <li>GraphQL</li>
+                </ul>
+            </section>
+
+            <!-- Education Section -->
+            <section class="section">
+                <h2>Education</h2>
+                <ul>
+                    <li>
+                        <strong>B.S. Computer Science</strong>
+                        <p>Stanford University (2014 - 2018)</p>
+                    </li>
+                    <li>
+                        <strong>AWS Certified Developer</strong>
+                        <p>Amazon Web Services (2019 - 2022)</p>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+            <!-- About Section -->
+            <section class="section">
+                <h2>About</h2>
+                <p>Passionate full-stack developer with 5+ years of experience building scalable web applications.
+                    Specialized in JavaScript frameworks and cloud architecture. Strong problem-solving skills and a
+                    team player focused on delivering high-quality solutions.</p>
+            </section>
+
+            <!-- Experience Section -->
+            <section class="section">
+                <h2>Experience</h2>
+                <ul>
+                    <li>
+                        <strong>Senior Software Engineer</strong> - TechCorp Inc. (2020 - Present)
+                        <ul>
+                            <li>Led team of 5 developers on flagship product</li>
+                            <li>Architected microservices transition</li>
+                            <li>Mentored junior engineers</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Software Developer</strong> - WebSolutions LLC (2018 - 2020)
+                        <ul>
+                            <li>Developed RESTful APIs</li>
+                            <li>Implemented CI/CD pipeline</li>
+                            <li>Reduced deployment time by 60%</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Projects Section -->
+            <section class="section">
+                <h2>Projects</h2>
+                <ul>
+                    <li>
+                        <strong>E-Commerce Platform</strong>
+                        <p>Built with React, Node.js, and MongoDB. Implemented payment gateway integration. Optimized
+                            performance by 40% through code splitting.</p>
+                    </li>
+                    <li>
+                        <strong>Task Management App</strong>
+                        <p>Real-time collaboration features. JWT authentication system. Responsive mobile-first design.
+                        </p>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>
