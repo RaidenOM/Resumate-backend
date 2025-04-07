@@ -51,6 +51,25 @@ app.get("/profile", verifyToken, async (req, res) => {
   res.json(user);
 });
 
+app.delete("/profile", verifyToken, async (req, res) => {
+  const { id } = req.user;
+  const deletedUser = await User.findByIdAndDelete(id);
+
+  const resumesToDelete = await Resume.find({ userId: id });
+
+  await Resume.deleteMany({ userId: id });
+
+  const urlParts = resumesToDelete.map((resume) => resume.url.split("/"));
+  const filenames = urlParts.map((urlPart) => urlPart.pop());
+  const public_ids = filenames.map((filename) => filename.split(".")[0]);
+
+  await Promise.all(
+    public_ids.map((public_id) => cloudinary.uploader.destroy(public_id))
+  );
+
+  res.json({ deletedUser, deletedResumes: resumesToDelete });
+});
+
 async function generatePdf(html) {
   const browser = await puppeteer.launch({
     args: [
