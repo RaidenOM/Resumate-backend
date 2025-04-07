@@ -395,20 +395,19 @@ module.exports.templates = {
                 padding: 0;
             }
             .resume {
-                display: flex;
-                max-width: 800px;
-                margin: 0 auto;
-                background: #fff;
-                padding: ${basePadding};
+              max-width: 800px;
+              margin: 0 auto;
+              background: #fff;
+              padding: 15px;
             }
+
             .left-column {
                 flex: 1;
-                padding-right: ${basePadding};
-                border-right: 2px solid #34495e;
+                padding-right: 15px;
             }
+
             .right-column {
                 flex: 2;
-                padding-left: ${basePadding};
             }
             h1 {
                 font-size: calc(${baseFontSize} * 2);
