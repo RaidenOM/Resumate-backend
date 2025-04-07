@@ -394,6 +394,7 @@ module.exports.templates = {
                 padding: 20px;
             }
             .resume {
+                display: flex;
                 max-width: 800px;
                 margin: 0 auto;
                 background: #fff;
