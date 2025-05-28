@@ -452,7 +452,6 @@ module.exports.templates = {
     </head>
     <body>
         <div class="resume">
-            <!-- Left Column -->
                 <!-- Header Section -->
                 <header>
                     <h1>${name}</h1>
@@ -468,17 +467,16 @@ module.exports.templates = {
                             : ""
                         }
                         ${address ? `<p>Location: ${address}</p>` : ""}
-                        ${links
-                          .map(
-                            (link) => `
-                            <p>${link.title}: <a href="${
-                              link.link
-                            }" target="_blank">${new URL(link.link).hostname}${
-                              new URL(link.link).pathname
-                            }</a></p>
-                        `
-                          )
-                          .join("")}
+                        ${
+                          links
+                            ? links
+                                .map(
+                                  (link) =>
+                                    `<a href="${link.link}" target="_blank">${link.title}</a>`
+                                )
+                                .join(" | ")
+                            : ""
+                        }
                     </div>
                 </header>
   

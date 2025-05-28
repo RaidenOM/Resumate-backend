@@ -10,6 +10,7 @@ const { createToken } = require("./utils");
 const { cloudinary } = require("./cloudinary");
 const { verifyToken } = require("./middleware");
 const { templates } = require("./constants");
+const Template = require("./models/Template");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 require("dotenv").config();
@@ -109,6 +110,11 @@ app.delete("/resume/:id", verifyToken, async (req, res) => {
   await cloudinary.uploader.destroy(public_id);
 
   res.json(deletedResume);
+});
+
+app.get("/templates", async (req, res) => {
+  const templates = await Template.find({});
+  res.json(templates);
 });
 
 app.post("/resume", verifyToken, async (req, res) => {
