@@ -467,16 +467,17 @@ module.exports.templates = {
                             : ""
                         }
                         ${address ? `<p>Location: ${address}</p>` : ""}
-                        ${
-                          links
-                            ? links
-                                .map(
-                                  (link) =>
-                                    `<a href="${link.link}" target="_blank">${link.title}</a>`
-                                )
-                                .join(" | ")
-                            : ""
-                        }
+                        ${links
+                          .map(
+                            (link) => `
+                            <p>${link.title}: <a href="${
+                              link.link
+                            }" target="_blank">${new URL(link.link).hostname}${
+                              new URL(link.link).pathname
+                            }</a></p>
+                        `
+                          )
+                          .join("")}
                     </div>
                 </header>
   
